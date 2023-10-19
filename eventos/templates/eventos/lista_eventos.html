@@ -1,0 +1,13 @@
+{% extends "eventos/base.html" %}
+
+{% block content %}
+  <h2>Lista de Eventos</h2>
+  <ul>
+    {% for evento in eventos %}
+      <li><a href="{% url 'detalle_evento' evento.id %}">{{ evento.titulo }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'crear_evento' %}" class="btn btn-primary">Crear Evento</a>
+  <a href="{% url 'registrar_evento' %}" class="btn btn-primary">Registrarse en Evento</a>
+  <a href="{% url 'registrar_usuario' %}" class="btn btn-primary">Registrar Nuevo Usuario</a>
+{% endblock %}

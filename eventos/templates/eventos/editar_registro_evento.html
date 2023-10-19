@@ -1,0 +1,11 @@
+{% extends "eventos/base.html" %}
+
+{% block content %}
+  <h2>Editar Registro de Evento</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+  <a href="{% url 'detalle_evento' registro.evento.id %}" class="btn btn-secondary" style="margin-top: 2rem;">Cancelar</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "eventos/base.html" %}
+
+{% block content %}
+  <h2>Detalles del Evento: {{ evento.nombre }}</h2>
+  <p>Descripción: {{ evento.descripcion }}</p> 
+  <p>Fecha: {{ evento.fecha }}</p>
+  <p>Ubicación: {{ evento.ubicacion }}</p>
+  <a href="{% url 'editar_evento' evento.id %}" class="btn btn-primary">Editar Evento</a>
+  <a href="{% url 'eliminar_evento' evento.id %}" class="btn btn-danger">Eliminar Evento</a>
+
+  <h5 style="margin-top: 2rem;">Usuarios Registrados</h5>
+    {% for registro in registros %}
+      <li>{{ registro.usuario.nombre }} registrado el {{ registro.fecha_registro }}</li>
+      <a href="{% url 'editar_registro_evento' registro.id %}" class="btn btn-sm btn-primary" style="margin-top: 0.5rem;">Editar Registro</a>
+      <a href="{% url 'eliminar_registro_evento' registro.id %}" class="btn btn-sm btn-danger" style="margin-top: 0.5rem;">Eliminar Registro</a>
+    {% endfor %}
+  <div style="margin-top: 2rem;">
+    <a href="{% url 'lista_eventos' %}" class="btn btn-secondary">Volver a la lista de eventos</a>
+  </div>
+{% endblock %}
